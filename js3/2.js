@@ -12,10 +12,21 @@
  * @return {array} arr
  */
 
-const solution = (num1, num2) => {
-  return []
+const populateColumns = (num, num2, res = []) => {
+  if (num === 0) return res
+
+  res.push({ x: res.length, y: num2 })
+
+  return populateColumns(num - 1, num2, res)
 }
 
+const solution = (num1, num2, res = []) => {
+  if (res.length === num1) return res
+
+  res.push(populateColumns(num2, res.length))
+
+  return solution(num1, num2, res)
+}
 module.exports = {
-  solution
+  solution,
 }
