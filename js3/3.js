@@ -6,9 +6,15 @@
 
 const solution = (arr) => {
   return (obj) => {
+    return arr.reduce((acc, el) => {
+      if (obj.hasOwnProperty(el)) {
+        acc[el] = obj[el]
+      }
+      return acc
+    }, {})
   }
 }
 
 module.exports = {
-  solution
+  solution,
 }
